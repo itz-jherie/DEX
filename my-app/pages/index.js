@@ -85,20 +85,20 @@ export default function Home() {
     }
   };
 
-  
+
 /***
  * get the amount of tokens a user will receive from swap _swapAmount-userinput
  * 
  * **/
   const _getAmountOfTokensRecievedFromSwap = async (_swapAmount) => {
     try {
-      const _swapAmountWei = utils.parseEther(_swapAmount.toString());
+      const _swapAmountWEI = utils.parseEther(_swapAmount.toString());
 
-      if(!_swapAmount.eq(zero)) {
+      if(!_swapAmountWEI.eq(zero)) {
         const provider = await getProviderOrSigner();
         const _ethBalance = await getEtherBalance(provider, null, true);
         const amountOfTokens = await _getAmountOfTokensRecievedFromSwap(
-          _swapAmount,
+          _swapAmountWEI,
           provider,
           ethSelected,
           _ethBalance,
